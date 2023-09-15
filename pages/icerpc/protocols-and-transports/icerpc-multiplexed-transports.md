@@ -135,12 +135,12 @@ using await var clientConnection = new ClientConnection(
     multiplexedClientTransport: clientTransport);
 ```
 
-[multiplexed-transport]: ../multiplexed-transport
-[duplex-transport]: ../duplex-transport
-[request-fields]: ../invocation/outgoing-request#request-fields
-[response-fields]: ../invocation/incoming-response#response-fields
-[status-code]: ../invocation/incoming-response#status-code
-[payload-continuation]: ../invocation/outgoing-request#request-payload-and-payload-continuation
+[multiplexed-transport]: /icerpc/multiplexed-transport
+[duplex-transport]: /icerpc/duplex-transport
+[request-fields]: /icerpc/invocation/outgoing-request#request-fields
+[response-fields]: /icerpc/invocation/incoming-response#response-fields
+[status-code]: /icerpc/invocation/incoming-response#status-code
+[payload-continuation]: /icerpc/invocation/outgoing-request#request-payload-and-payload-continuation
 
 [application-layer]: https://en.wikipedia.org/wiki/Application_layer
 [QUIC]: https://www.rfc-editor.org/rfc/rfc9000.html

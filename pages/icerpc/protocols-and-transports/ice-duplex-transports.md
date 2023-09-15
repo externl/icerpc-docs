@@ -78,11 +78,11 @@ The following IceRPC features are not available with the ice protocol:
 - [response fields][response-fields]
 - [status codes][status-code] other than `Ok`, `ApplicationError`, `NotFound`, `NotImplemented` and `InternalError`
 
-[duplex-transport]: ../duplex-transport
-[payload-continuations]: ../invocation/outgoing-request#request-payload-and-payload-continuation
-[request-fields]: ../invocation/outgoing-request#request-fields
-[response-fields]: ../invocation/incoming-response#response-fields
-[status-code]: ../invocation/incoming-response#status-code
+[duplex-transport]: /icerpc/duplex-transport
+[payload-continuations]: /icerpc/invocation/outgoing-request#request-payload-and-payload-continuation
+[request-fields]: /icerpc/invocation/outgoing-request#request-fields
+[response-fields]: /icerpc/invocation/incoming-response#response-fields
+[status-code]: /icerpc/invocation/incoming-response#status-code
 
 [application-layer]: https://en.wikipedia.org/wiki/Application_layer
 [RFCOMM]: https://en.wikipedia.org/wiki/List_of_Bluetooth_protocols#Radio_frequency_communication_(RFCOMM)

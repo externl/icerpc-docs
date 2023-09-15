@@ -91,8 +91,8 @@ flowchart LR
     service -- response --> middleware -- response --> connection
 ```
 
-[connections]: ../connection/how-to-create-a-connection
-[invoker]: ../invocation/invocation-pipeline#the-invoker-abstraction
+[connections]: /icerpc/connection/how-to-create-a-connection
+[invoker]: /icerpc/invocation/invocation-pipeline#the-invoker-abstraction
 [Slice service]: /slice/language-guide/interface
 
 [IDispatcher]: csharp:IceRpc.IDispatcher

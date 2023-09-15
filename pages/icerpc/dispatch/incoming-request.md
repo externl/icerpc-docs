@@ -54,7 +54,7 @@ pipeline. IceRPC provides both request fields (carried by requests) and response
 only request features: since it's all local, there is no need for response features.
 {% /callout %}
 
-[fields]: ../invocation/outgoing-request#request-fields
+[fields]: /icerpc/invocation/outgoing-request#request-fields
 
 [IFeatureCollection]: csharp:IceRpc.Features.FeatureCollection
 [IDispatchInformationFeature]: csharp:IceRpc.Features.IDispatchInformationFeature

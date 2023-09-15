@@ -127,6 +127,6 @@ For example, a response with status code `Ok`, no fields and an empty payload ca
 ```
 
 [Slice]: /slice2
-[request-fields]: ../invocation/outgoing-request#request-fields
-[status-code]: ../invocation/incoming-response#status-code
-[response-fields]: ../invocation/incoming-response#response-fields
+[request-fields]: /icerpc/invocation/outgoing-request#request-fields
+[status-code]: /icerpc/invocation/incoming-response#status-code
+[response-fields]: /icerpc/invocation/incoming-response#response-fields

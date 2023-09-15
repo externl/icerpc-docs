@@ -70,7 +70,7 @@ flowchart LR
     connection -- response --> ti -- response --> i2 -- response --> i1 -- response --> app
 ```
 
-[connections]: ../connection/how-to-create-a-connection
+[connections]: /icerpc/connection/how-to-create-a-connection
 
 [ClientConnection]: csharp:IceRpc.ClientConnection
 [ConnectionCache]: csharp:IceRpc.ConnectionCache

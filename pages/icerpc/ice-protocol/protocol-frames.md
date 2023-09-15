@@ -215,5 +215,5 @@ set to 1.1.
 
 [protocol-and-encoding]: https://doc.zeroc.com/ice/3.7/ice-protocol-and-encoding
 [Slice]: /slice1
-[status-code]: ../invocation/incoming-response#status-code
-[request-fields]: ../invocation/outgoing-request#request-fields
+[status-code]: /icerpc/invocation/incoming-response#status-code
+[request-fields]: /icerpc/invocation/outgoing-request#request-fields

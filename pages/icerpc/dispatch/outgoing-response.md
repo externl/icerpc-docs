@@ -25,7 +25,7 @@ In C#, the payload of an outgoing response is split in a payload and a payload c
 [outgoing request]. This split makes the encoding of a response payload more convenient and efficient for the [Slice]
 generated code, but is otherwise unnecessary. An outgoing response payload is conceptually one continuous stream of bytes.
 
-[fields]: ../invocation/incoming-response#response-fields
-[outgoing request]: ../invocation/outgoing-request
-[status code]: ../invocation/incoming-response#status-code
+[fields]: /icerpc/invocation/incoming-response#response-fields
+[outgoing request]: /icerpc/invocation/outgoing-request
+[status code]: /icerpc/invocation/incoming-response#status-code
 [Slice]: /slice

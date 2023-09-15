@@ -104,7 +104,7 @@ compat struct VehicleCarrier {
 The mode statement is not mapped to anything in C#. It does however influence the C# mapping of most other Slice
 definitions.
 
-[encoding]: ../encoding
+[encoding]: /slice/encoding
 [enum type]: enum-types
 [proxy type]: proxy-types
 

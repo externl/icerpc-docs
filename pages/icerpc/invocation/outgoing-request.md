@@ -93,8 +93,8 @@ pipeline. IceRPC provides both request fields (carried by requests) and response
 only request features: since it's all local, there is no need for response features.
 {% /callout %}
 
-[middleware]: ../dispatch/middleware
-[dispatcher]: ../dispatch/dispatch-pipeline#the-dispatcher-abstraction
+[middleware]: /icerpc/dispatch/middleware
+[dispatcher]: /icerpc/dispatch/dispatch-pipeline#the-dispatcher-abstraction
 
 [RequestFieldKey]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/RequestFieldKey.slice
 [CompressionFormat]: https://github.com/icerpc/icerpc-slice/blob/main/IceRpc/CompressionFormat.slice

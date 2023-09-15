@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { Mode } from 'types';
 import { useMode } from 'context/state';
+import { resolve } from 'path';
 
 type AppLinkProps = {
   href: string;
@@ -36,31 +37,46 @@ export const AppLink = ({
 }: AppLinkProps) => {
   const { asPath, isReady } = useRouter();
 
-  const [href, setHref] = useState(originalHref);
+  // Resolve non-slice links. Resolution of slice links is done in the useEffect below (i.e. in the browser) .
+  let initialUrl = ""
+  if (originalHref.startsWith('#')) {
+    initialUrl = originalHref;
+  }
+  if (isApiLink(originalHref)) {
+    initialUrl = resolveApiLink(originalHref);
+  } else if (isExternalLink(originalHref)) {
+    initialUrl = originalHref;
+  }
+  else if (originalHref.startsWith('/')) {
+    // Resolve links with '..' in them
+    const url = resolve(originalHref)
+    if (!url.startsWith('/slice/') && url != "/slice") {
+      initialUrl = url
+    }
+  }
 
+  const [href, setHref] = useState(initialUrl);
   const { mode, setMode } = useMode();
 
   useEffect(() => {
     // If the router is not ready, we can't resolve the link.
-    if (!isReady) return;
+    // If the link is already resolved, we don't need to resolve it again.
+    if (!isReady || href !== "") return;
 
-    let url = isApiLink(originalHref)
-      ? resolveApiLink(originalHref)
-      : resolveRelativeLink(originalHref, asPath);
+    let url = originalHref.startsWith('/') ? originalHref : `${asPath.replace(/\/[^/]+$/, '')}/${originalHref}`;
 
     // Resolve internal relative urls like "/abc/../foo" to their absolute path.
-    if (!isExternalLink(url)) {
-      const baseURL = 'https://docs.icerpc.dev';
-      const parsedUrl = new URL(url, baseURL);
-      // Strip baseURL from the url
-      url = parsedUrl.href.replace(baseURL, '');
+    const baseURL = 'https://docs.icerpc.dev';
+    const parsedUrl = new URL(url, baseURL);
 
-      // If the link is a /slice/ link, we need to convert it to a /slice1/ or /slice2/ link based on the current mode.
-      url = url.replace(
-        /^\/slice(?=#|\/|$)/,
-        mode === Mode.Slice1 ? '/slice1' : '/slice2'
-      );
-    }
+    // Strip baseURL from the url
+    url = parsedUrl.href.replace(baseURL, '');
+
+    // If the link is a /slice/ link, we need to convert it to a /slice1/ or /slice2/ link based on the current mode.
+    url = url.replace(
+      /^\/slice(?=#|\/|$)/,
+      mode === Mode.Slice1 ? '/slice1' : '/slice2'
+    );
 
     setHref(url);
   }, [originalHref, asPath, href, isReady, mode]);
@@ -81,7 +97,7 @@ export const AppLink = ({
   const prefetch =
     isExternalLink(originalHref) || isApiLink(originalHref) ? false : undefined;
 
-  return (
+  return href !== "" ?
     <Link
       href={href}
       target={target}
@@ -115,7 +131,9 @@ export const AppLink = ({
         }
       `}</style>
     </Link>
-  );
+    :
+    <span>{children}</span>
+    ;
 };
 
 // Utility Functions
@@ -177,23 +195,6 @@ const isApiLink = (href: string) => {
 const resolveApiLink = (href: string) => {
   const [language, ...rest] = href.split(':');
   const [module, method] = rest.join('.').split('#');
-  return `https://docs.icerpc.dev/api/${language}/api/${module}.html${
-    method ? `#${method}` : ''
-  }`;
-};
-
-/**
- * Resolve relative links to their full path.
- * @param {string} href - The original link.
- * @param {string} routerPath - The current route path.
- * @returns {string} - The resolved link.
- */
-const resolveRelativeLink = (href: string, routerPath: string) => {
-  if (isExternalLink(href) || href.startsWith('/')) {
-    return href;
-  }
-  if (href.startsWith('#')) {
-    return `${routerPath.split('#')[0]}${href}`;
-  }
-  return `${routerPath.replace(/\/[^/]+$/, '')}/${href}`;
+  return `https://docs.icerpc.dev/api/${language}/api/${module}.html${method ? `#${method}` : ''
+    }`;
 };

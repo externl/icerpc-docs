@@ -5,7 +5,7 @@ description: Understand how to build your dispatch pipeline with a DI container.
 
 ## Traditional dispatch pipeline
 
-A traditional dispatch pipeline is fairly static: you create a [router](../dispatch/router), add a few middleware, map
+A traditional dispatch pipeline is fairly static: you create a [router](/icerpc/dispatch/router), add a few middleware, map
 or mount a small number of leaf dispatchers in this router and then let your server dispatch incoming requests to this
 router.
 
@@ -189,7 +189,7 @@ internal class Chatbot : Service, IGreeterService
 }
 ```
 
-[features]: ../dispatch/incoming-request#request-features
+[features]: /icerpc/dispatch/incoming-request#request-features
 
 [IServiceCollection]: https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
 [IServiceProvider]: https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider
